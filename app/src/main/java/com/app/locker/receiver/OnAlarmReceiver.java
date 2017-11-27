@@ -46,6 +46,11 @@ public class OnAlarmReceiver extends BroadcastReceiver {
             count++;
         }
 
+        Intent dial_intent = new Intent(Intent.ACTION_DIAL);
+
+        ResolveInfo dialLauncher = mContext.getPackageManager().resolveActivity(dial_intent, PackageManager.MATCH_DEFAULT_ONLY);
+        String deafultDialStr = dialLauncher.activityInfo.packageName;
+
 //        get launcher package name
         Intent launcher_intent = new Intent(Intent.ACTION_MAIN);
         launcher_intent.addCategory(Intent.CATEGORY_HOME);
@@ -69,6 +74,7 @@ public class OnAlarmReceiver extends BroadcastReceiver {
         install = (String[]) ArrayUtils.removeElement(install, deaultLauncherStr);
         install = (String[]) ArrayUtils.removeElement(install, sms_name);
         install = (String[]) ArrayUtils.removeElement(install, "com.android.systemui");
+        install = (String[]) ArrayUtils.removeElement(install, deafultDialStr);
 
         activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         String[] activePackages;
