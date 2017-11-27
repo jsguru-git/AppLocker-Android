@@ -25,7 +25,7 @@ public class OnBootReceiver extends BroadcastReceiver {
         AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
-        manager.setRepeating(RTC_WAKEUP, calendar.getTimeInMillis(), 1000, pendingIntent);
+        manager.setRepeating(RTC_WAKEUP, calendar.getTimeInMillis(), Constants.interval, pendingIntent);
         Log.e(Constants.TAG, "Alarm Manager Complete");
     }
 }

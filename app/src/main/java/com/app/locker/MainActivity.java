@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
-        manager.setRepeating(RTC_WAKEUP, calendar.getTimeInMillis(), 300, pendingIntent);
+        manager.setRepeating(RTC_WAKEUP, calendar.getTimeInMillis(), Constants.interval, pendingIntent);
         Log.e(Constants.TAG, "Alarm Manager Complete");
     }
 }
