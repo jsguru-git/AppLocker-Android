@@ -10,7 +10,7 @@ import android.util.Log;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
-import com.app.locker.service.OnAlarmReceiver;
+import com.app.locker.receiver.OnAlarmReceiver;
 import com.app.locker.util.Constants;
 import com.app.locker.util.Preference;
 

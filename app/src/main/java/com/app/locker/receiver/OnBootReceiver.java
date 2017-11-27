@@ -1,4 +1,4 @@
-package com.app.locker.service;
+package com.app.locker.receiver;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;

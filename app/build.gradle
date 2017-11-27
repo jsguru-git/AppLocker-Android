@@ -25,4 +25,11 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    compile 'com.google.firebase:firebase-core:10.2.1'                                               // this line must be included to integrate with Firebase
+    compile 'com.google.firebase:firebase-messaging:10.2.1'                                          // this line must be included to use FCM
+
 }
+
+
+apply plugin: 'com.google.gms.google-services'
