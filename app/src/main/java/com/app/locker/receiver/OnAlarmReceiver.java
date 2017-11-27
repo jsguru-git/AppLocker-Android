@@ -47,6 +47,7 @@ public class OnAlarmReceiver extends BroadcastReceiver {
                 count++;
             }
 
+    //      get dialer package name
             Intent dial_intent = new Intent(Intent.ACTION_DIAL);
 
             ResolveInfo dialLauncher = mContext.getPackageManager().resolveActivity(dial_intent, PackageManager.MATCH_DEFAULT_ONLY);
@@ -74,8 +75,9 @@ public class OnAlarmReceiver extends BroadcastReceiver {
     //        remove launcher, sms and phone package
             install = (String[]) ArrayUtils.removeElement(install, deaultLauncherStr);
             install = (String[]) ArrayUtils.removeElement(install, sms_name);
-            install = (String[]) ArrayUtils.removeElement(install, "com.android.systemui");
             install = (String[]) ArrayUtils.removeElement(install, deafultDialStr);
+            install = (String[]) ArrayUtils.removeElement(install, "com.android.systemui");
+            install = (String[]) ArrayUtils.removeElement(install, "com.android.phone");
 
             activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
             String[] activePackages;
@@ -85,12 +87,6 @@ public class OnAlarmReceiver extends BroadcastReceiver {
             } else {
                 activePackages = getActivePackagesCompat();
             }
-
-            for (int i = 0; i < activePackages.length; i++) {
-                Log.e(Constants.TAG, "Package Name : " + activePackages[i]);
-            }
-
-            Log.e(Constants.TAG, "My Package Name : " + mContext.getPackageName());
 
             Intent pwdIntent = new Intent(context, LockActivity.class);
             pwdIntent.setFlags(FLAG_ACTIVITY_NEW_TASK | FLAG_ACTIVITY_CLEAR_TOP);
@@ -106,7 +102,8 @@ public class OnAlarmReceiver extends BroadcastReceiver {
                     String activePackage = activePackages[i];
                     Log.e(Constants.TAG, activePackage);
                     for (int j = 0; j < install.length; j++) {
-                        if (!activePackage.equalsIgnoreCase(mContext.getPackageName()) && activePackage.equalsIgnoreCase(install[j]) && getpreferences("Lock").equalsIgnoreCase("False")) {
+//                        if (!activePackage.equalsIgnoreCase(mContext.getPackageName()) && activePackage.equalsIgnoreCase(install[j]) && getpreferences("Lock").equalsIgnoreCase("False")) {
+                        if (!activePackage.equalsIgnoreCase(mContext.getPackageName()) && activePackage.equalsIgnoreCase(install[j])) {
                             Log.e("package name match", activePackage);
                             SavePreferences("Lock", "Still");
                             pwdIntent.putExtra("Packagename", activePackage);
