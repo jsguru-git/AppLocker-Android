@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Locker.iml" filepath="$PROJECT_DIR$/Locker.iml" />
       <module fileurl="file://E:\Data\working\Android\Locker-git\Locker.iml" filepath="E:\Data\working\Android\Locker-git\Locker.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Locker-git.iml" filepath="$PROJECT_DIR$/Locker-git.iml" />
+      <module fileurl="file://C:\Users\KBest\AndroidStudioProjects\Locker\Locker-git.iml" filepath="C:\Users\KBest\AndroidStudioProjects\Locker\Locker-git.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://E:\Data\working\Android\Locker-git\app\app.iml" filepath="E:\Data\working\Android\Locker-git\app\app.iml" />
     </modules>
