@@ -4,7 +4,11 @@ import android.app.ActivityManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.os.Build;
+import android.provider.Telephony;
 import android.util.Log;
 
 import com.app.locker.activity.LockActivity;
@@ -13,10 +17,13 @@ import com.app.locker.util.Preference;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+
+import org.apache.commons.lang.ArrayUtils;
 
 public class OnAlarmReceiver extends BroadcastReceiver {
     ActivityManager activityManager;
@@ -26,6 +33,43 @@ public class OnAlarmReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Log.e(Constants.TAG, "Alarm Service Receiver");
         mContext = context;
+        mContext.getPackageManager();
+        PackageManager pm = mContext.getPackageManager();
+        List<ApplicationInfo> apps = pm.getInstalledApplications(0);
+
+        String[] install = new String[apps.size()];
+        int count = 0;
+
+        for(ApplicationInfo app : apps)
+        {
+            install[count] = app.packageName;
+            count++;
+        }
+
+//        get launcher package name
+        Intent launcher_intent = new Intent(Intent.ACTION_MAIN);
+        launcher_intent.addCategory(Intent.CATEGORY_HOME);
+        ResolveInfo defaultLauncher = mContext.getPackageManager().resolveActivity(launcher_intent, PackageManager.MATCH_DEFAULT_ONLY);
+        String deaultLauncherStr = defaultLauncher.activityInfo.packageName;
+
+//        get sms package name
+        String sms_name = new String();
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+        {
+            sms_name = Telephony.Sms.getDefaultSmsPackage(mContext);
+        }
+        else {
+            Intent sms_intent = new Intent(Intent.ACTION_VIEW).addCategory(Intent.CATEGORY_DEFAULT).setType("vnd.android-dir/mms-sms");
+            final List<ResolveInfo> sms_resolveInfos = mContext.getPackageManager().queryIntentActivities(sms_intent, 0);
+            if (sms_resolveInfos != null && !sms_resolveInfos.isEmpty())
+                sms_name = sms_resolveInfos.get(0).activityInfo.packageName;
+        }
+
+//        remove launcher, sms and phone package
+        install = (String[]) ArrayUtils.removeElement(install, deaultLauncherStr);
+        install = (String[]) ArrayUtils.removeElement(install, sms_name);
+        install = (String[]) ArrayUtils.removeElement(install, "com.android.systemui");
+
         activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         String[] activePackages;
 
@@ -51,10 +95,12 @@ public class OnAlarmReceiver extends BroadcastReceiver {
             while (i < length) {
                 String activePackage = activePackages[i];
                 Log.e(Constants.TAG, activePackage);
-            if (Preference.getLockSetting(mContext) && !activePackage.equalsIgnoreCase("com.android.mms")&& !activePackage.equalsIgnoreCase("com.android.contacts") && !activePackage.equalsIgnoreCase(mContext.getPackageName())) {
-                    Log.e("package name match", activePackage);
-                    pwdIntent.putExtra("Packagename", activePackage);
-                    this.mContext.startActivity(pwdIntent);
+                for (int j=0;j<install.length;j++) {
+                    if(Preference.getLockSetting(mContext) && !activePackage.equalsIgnoreCase(mContext.getPackageName()) && activePackage.equalsIgnoreCase(install[j])) {
+                        Log.e("package name match", activePackage);
+                        pwdIntent.putExtra("Packagename", activePackage);
+                        this.mContext.startActivity(pwdIntent);
+                    }
                 }
                 i++;
             }
