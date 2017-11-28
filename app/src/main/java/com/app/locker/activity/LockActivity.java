@@ -30,8 +30,8 @@ public class LockActivity extends Activity {
     Drawable icon;
     ImageView img_dot;
     TextView txt_appName;
-    TextView txt_notification;
-    Button back_button;
+    //    TextView txt_notification;
+    ImageView back_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +39,8 @@ public class LockActivity extends Activity {
         setContentView(R.layout.activity_lock);
         this.img_dot = (ImageView) findViewById(R.id.img_dot);
         this.txt_appName = (TextView) findViewById(R.id.txt_appName);
-        this.txt_notification = (TextView) findViewById(R.id.txt_notification);
-        this.back_button = (Button) findViewById(R.id.back_button);
+//        this.txt_notification = (TextView) findViewById(R.id.txt_notification);
+        this.back_button = (ImageView) findViewById(R.id.back_button);
         Bundle extras = getIntent().getExtras();
 
         StringBuilder sb = new StringBuilder();
@@ -76,7 +76,7 @@ public class LockActivity extends Activity {
         this.img_dot.setImageDrawable(this.icon);
         this.txt_appName.setText(this.appName);
 //        this.txt_notification.setText(formatter.format("The %s App had been locked", this.appName).toString());
-        this.txt_notification.setText("This App Is Locked!");
+//        this.txt_notification.setText("This App Is Locked!");
     }
 
     @Override
