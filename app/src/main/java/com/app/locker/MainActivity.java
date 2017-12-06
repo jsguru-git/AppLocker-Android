@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 
 import com.app.locker.receiver.OnAlarmReceiver;
 import com.app.locker.util.Constants;
@@ -20,11 +21,13 @@ import static android.app.AlarmManager.RTC_WAKEUP;
 
 public class MainActivity extends AppCompatActivity {
     CheckBox lockCheckBox;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        context = getApplicationContext();
 
         lockCheckBox = this.findViewById(R.id.lock_check_box);
 
@@ -32,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isCheck) {
                 Preference.setLockSetting(MainActivity.this, isCheck);
+                if (isCheck)
+                    Toast.makeText(context, "All Apps Locked", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(context, "All Apps Unlocked", Toast.LENGTH_SHORT).show();
             }
         });
 
