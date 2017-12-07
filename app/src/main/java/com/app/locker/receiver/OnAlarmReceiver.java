@@ -49,10 +49,10 @@ public class OnAlarmReceiver extends BroadcastReceiver {
             }
 
     //      get dialer package name
-//            Intent dial_intent = new Intent(Intent.ACTION_DIAL);
-//
-//            ResolveInfo dialLauncher = mContext.getPackageManager().resolveActivity(dial_intent, PackageManager.MATCH_DEFAULT_ONLY);
-//            String deafultDialStr = dialLauncher.activityInfo.packageName;
+            Intent dial_intent = new Intent(Intent.ACTION_DIAL);
+
+            ResolveInfo dialLauncher = mContext.getPackageManager().resolveActivity(dial_intent, PackageManager.MATCH_DEFAULT_ONLY);
+            String deafultDialStr = dialLauncher.activityInfo.packageName;
 
     //      get launcher package name
             Intent launcher_intent = new Intent(Intent.ACTION_MAIN);
@@ -61,22 +61,22 @@ public class OnAlarmReceiver extends BroadcastReceiver {
             String deaultLauncherStr = defaultLauncher.activityInfo.packageName;
 
     //      get sms package name
-//            String sms_name = new String();
-//            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
-//            {
-//                sms_name = Telephony.Sms.getDefaultSmsPackage(mContext);
-//            }
-//            else {
-//                Intent sms_intent = new Intent(Intent.ACTION_VIEW).addCategory(Intent.CATEGORY_DEFAULT).setType("vnd.android-dir/mms-sms");
-//                final List<ResolveInfo> sms_resolveInfos = mContext.getPackageManager().queryIntentActivities(sms_intent, 0);
-//                if (sms_resolveInfos != null && !sms_resolveInfos.isEmpty())
-//                    sms_name = sms_resolveInfos.get(0).activityInfo.packageName;
-//            }
+            String sms_name = new String();
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+            {
+                sms_name = Telephony.Sms.getDefaultSmsPackage(mContext);
+            }
+            else {
+                Intent sms_intent = new Intent(Intent.ACTION_VIEW).addCategory(Intent.CATEGORY_DEFAULT).setType("vnd.android-dir/mms-sms");
+                final List<ResolveInfo> sms_resolveInfos = mContext.getPackageManager().queryIntentActivities(sms_intent, 0);
+                if (sms_resolveInfos != null && !sms_resolveInfos.isEmpty())
+                    sms_name = sms_resolveInfos.get(0).activityInfo.packageName;
+            }
 
     //        remove launcher, sms and phone package
             install = (String[]) ArrayUtils.removeElement(install, deaultLauncherStr);
-//            install = (String[]) ArrayUtils.removeElement(install, sms_name);
-//            install = (String[]) ArrayUtils.removeElement(install, deafultDialStr);
+            install = (String[]) ArrayUtils.removeElement(install, sms_name);
+            install = (String[]) ArrayUtils.removeElement(install, deafultDialStr);
             install = (String[]) ArrayUtils.removeElement(install, "com.android.systemui");
             install = (String[]) ArrayUtils.removeElement(install, "com.android.phone");
 
