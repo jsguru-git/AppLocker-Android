@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.app.locker">
-    <uses-sdk android:minSdkVersion="13" android:targetSdkVersion="21" />
+
+    <uses-sdk
+        android:minSdkVersion="13"
+        android:targetSdkVersion="21" />
 
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
@@ -16,6 +19,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.REORDER_TASKS" />
 
     <application
         android:allowBackup="true"
@@ -24,38 +28,65 @@
         android:roundIcon="@mipmap/locker_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!-- <activity -->
+        <!-- android:name=".MainActivity" -->
+        <!-- android:launchMode="singleInstance"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
+
         <activity
-            android:name=".MainActivity"
-            android:launchMode="singleInstance">
+            android:name=".activity.FirstActivity"
+            android:screenOrientation="portrait"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"/>
+        <activity
+            android:name=".activity.LockActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"/>
 
-        <activity android:name="com.app.locker.activity.LockActivity"/>
-
-        <receiver android:name="com.app.locker.receiver.OnAlarmReceiver" />
-
-        <receiver android:name="com.app.locker.receiver.OnBootReceiver">
+        <receiver android:name=".receiver.OnAlarmReceiver" />
+        <receiver android:name=".receiver.OnBootReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
 
-        <service android:name="com.app.locker.receiver.MyFirebaseMessageService">
+        <service android:name=".receiver.MyFirebaseMessageService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".service.FirebaseIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
 
-        <service android:name="com.app.locker.service.FirebaseIDService">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
-            </intent-filter>
-        </service>
-
+        <activity
+            android:name=".activity.ConfirmActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"/>
+        <activity
+            android:name=".activity.PasswordActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"/>
     </application>
 
 </manifest>

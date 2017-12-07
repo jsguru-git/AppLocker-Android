@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lout_main_passcode"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/a1"
+    android:gravity="top|bottom|center_vertical|fill_vertical|center|fill"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <RelativeLayout
+                    android:id="@+id/lout_dot"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:id="@+id/pass_lay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/txt_enter_password"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="50dp"
+                            android:text="Set Password"
+                            android:textColor="#fff"
+                            android:textSize="25dp"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/txt_Confirm_password"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="5dp"
+                            android:text="Confirm Password"
+                            android:textColor="#fff"
+                            android:textSize="25dp"
+                            android:visibility="gone" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/shakelayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/pass_lay"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp">
+
+                        <FrameLayout
+                            android:id="@+id/fram1"
+                            android:layout_width="@integer/squreicon_size"
+                            android:layout_height="@integer/squreicon_size"
+                            android:layout_marginRight="5dp"
+                            android:background="@drawable/squreicon">
+
+                            <ImageView
+                                android:id="@+id/img_dot1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="top|bottom|left|right|center_vertical|fill_vertical|center_horizontal|fill_horizontal|center|fill|start|end"
+                                android:layout_margin="15dp"
+                                android:src="@drawable/open_dot" />
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:id="@+id/fram2"
+                            android:layout_width="@integer/squreicon_size"
+                            android:layout_height="@integer/squreicon_size"
+                            android:layout_marginRight="5dp"
+                            android:layout_toRightOf="@+id/fram1"
+                            android:background="@drawable/squreicon">
+
+                            <ImageView
+                                android:id="@+id/img_dot2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="top|bottom|left|right|center_vertical|fill_vertical|center_horizontal|fill_horizontal|center|fill|start|end"
+                                android:layout_margin="15dp"
+                                android:src="@drawable/open_dot" />
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:id="@+id/fram3"
+                            android:layout_width="@integer/squreicon_size"
+                            android:layout_height="@integer/squreicon_size"
+                            android:layout_marginRight="5dp"
+                            android:layout_toRightOf="@+id/fram2"
+                            android:background="@drawable/squreicon">
+
+                            <ImageView
+                                android:id="@+id/img_dot3"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="top|bottom|left|right|center_vertical|fill_vertical|center_horizontal|fill_horizontal|center|fill|start|end"
+                                android:layout_margin="15dp"
+                                android:src="@drawable/open_dot" />
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:id="@+id/fram4"
+                            android:layout_width="@integer/squreicon_size"
+                            android:layout_height="@integer/squreicon_size"
+                            android:layout_toRightOf="@+id/fram3"
+                            android:background="@drawable/squreicon">
+
+                            <ImageView
+                                android:id="@+id/img_dot4"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="top|bottom|left|right|center_vertical|fill_vertical|center_horizontal|fill_horizontal|center|fill|start|end"
+                                android:layout_margin="15dp"
+                                android:src="@drawable/open_dot" />
+                        </FrameLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lout_dot"
+                    android:layout_marginBottom="25dp"
+                    android:layout_marginTop="10dp">
+
+                    <RelativeLayout
+                        android:id="@+id/lot_num_line1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="7dp">
+
+                        <RelativeLayout
+                            android:id="@+id/lout_num1"
+                            android:layout_width="@integer/passcode_button_size"
+                            android:layout_height="@integer/passcode_button_size"
+                            android:layout_marginRight="15dp"
+                            android:background="@drawable/number_press">
+
+                            <TextView
+                                android:id="@+id/txt_num1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:text="1"
+                                android:textColor="#fff"
+                                android:textSize="25dp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/lout_num2"
+                            android:layout_width="@integer/passcode_button_size"
+                            android:layout_height="@integer/passcode_button_size"
+                            android:layout_marginRight="15dp"
+                            android:layout_toRightOf="@+id/lout_num1"
+                            android:background="@drawable/number_press">
+
+                            <TextView
+                                android:id="@+id/txt_num2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:text="2"
+                                android:textColor="#fff"
+                                android:textSize="25dp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/lout_num3"
+                            android:layout_width="@integer/passcode_button_size"
+                            android:layout_height="@integer/passcode_button_size"
+                            android:layout_toRightOf="@+id/lout_num2"
+                            android:background="@drawable/number_press">
+
+                            <TextView
+                                android:id="@+id/txt_num3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:text="3"
+                                android:textColor="#fff"
+                                android:textSize="25dp" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/lot_num_line2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/lot_num_line1"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="7dp">
+
+                        <RelativeLayout
+                            android:id="@+id/lout_num4"
+                            android:layout_width="@integer/passcode_button_size"
+                            android:layout_height="@integer/passcode_button_size"
+                            android:layout_marginRight="15dp"
+                            android:background="@drawable/number_press">
+
+                            <TextView
+                                android:id="@+id/txt_num4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:text="4"
+                                android:textColor="#fff"
+                                android:textSize="25dp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/lout_num5"
+                            android:layout_width="@integer/passcode_button_size"
+                            android:layout_height="@integer/passcode_button_size"
+                            android:layout_marginRight="15dp"
+                            android:layout_toRightOf="@+id/lout_num4"
+                            android:background="@drawable/number_press">
+
+                            <TextView
+                                android:id="@+id/txt_num5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:text="5"
+                                android:textColor="#fff"
+                                android:textSize="25dp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/lout_num6"
+                            android:layout_width="@integer/passcode_button_size"
+                            android:layout_height="@integer/passcode_button_size"
+                            android:layout_toRightOf="@+id/lout_num5"
+                            android:background="@drawable/number_press">
+
+                            <TextView
+                                android:id="@+id/txt_num6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:text="6"
+                                android:textColor="#fff"
+                                android:textSize="25dp" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/lot_num_line3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/lot_num_line2"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="7dp">
+
+                        <RelativeLayout
+                            android:id="@+id/lout_num7"
+                            android:layout_width="@integer/passcode_button_size"
+                            android:layout_height="@integer/passcode_button_size"
+                            android:layout_marginRight="15dp"
+                            android:background="@drawable/number_press">
+
+                            <TextView
+                                android:id="@+id/txt_num7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:text="7"
+                                android:textColor="#fff"
+                                android:textSize="25dp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/lout_num8"
+                            android:layout_width="@integer/passcode_button_size"
+                            android:layout_height="@integer/passcode_button_size"
+                            android:layout_marginRight="15dp"
+                            android:layout_toRightOf="@+id/lout_num7"
+                            android:background="@drawable/number_press">
+
+                            <TextView
+                                android:id="@+id/txt_num8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:text="8"
+                                android:textColor="#fff"
+                                android:textSize="25dp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/lout_num9"
+                            android:layout_width="@integer/passcode_button_size"
+                            android:layout_height="@integer/passcode_button_size"
+                            android:layout_toRightOf="@+id/lout_num8"
+                            android:background="@drawable/number_press">
+
+                            <TextView
+                                android:id="@+id/txt_num9"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:text="9"
+                                android:textColor="#fff"
+                                android:textSize="25dp" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/lot_num_line4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/lot_num_line3"
+                        android:layout_centerHorizontal="true"
+                        android:paddingBottom="15dp">
+
+                        <RelativeLayout
+                            android:id="@+id/lout_numback"
+                            android:layout_width="@integer/passcode_button_size"
+                            android:layout_height="@integer/passcode_button_size"
+                            android:layout_marginRight="15dp">
+
+                            <TextView
+                                android:id="@+id/txt_num0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:text="Back"
+                                android:textColor="#fff"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/lout_num0"
+                            android:layout_width="@integer/passcode_button_size"
+                            android:layout_height="@integer/passcode_button_size"
+                            android:layout_marginRight="15dp"
+                            android:layout_toRightOf="@+id/lout_numback"
+                            android:background="@drawable/number_press">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:text="0"
+                                android:textColor="#fff"
+                                android:textSize="25dp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/lout_clear"
+                            android:layout_width="@integer/passcode_button_size"
+                            android:layout_height="@integer/passcode_button_size"
+                            android:layout_toRightOf="@+id/lout_num0">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:text="Clear"
+                                android:textColor="#fff"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

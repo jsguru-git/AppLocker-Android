@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="squreicon_size">50</integer>
+    <integer name="squreicon_inner_size">20</integer>
+    <integer name="passcode_button_size">70</integer>
+</resources>
